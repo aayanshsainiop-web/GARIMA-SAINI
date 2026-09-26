@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dr. Garima Saini | Ayurvedic Doctor</title>
+
+    <meta name="description"
+          content="Official profile of Dr. Garima Saini, BAMS Ayurvedic Doctor at Shree Dhanvantri Clinic, Roorkee.">
+
+    <style>
+
+        /* =====================================================
+           BASIC SETTINGS
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #087fce;
+            --secondary: #00b4d8;
+            --dark-blue: #023e8a;
+            --light-blue: #eaf7ff;
+
+            --background: #f7fbff;
+            --surface: #ffffff;
+            --text: #102a43;
+            --muted: #627d98;
+            --border: rgba(8, 127, 206, 0.15);
+
+            --shadow: 0 15px 45px rgba(0, 80, 150, 0.12);
+        }
+
+        body.dark {
+            --background: #06111d;
+            --surface: #0c1d2c;
+            --text: #f4f9ff;
+            --muted: #a9bdd0;
+            --border: rgba(255,255,255,0.1);
+
+            --shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =====================================================
+           LOADING SCREEN
+        ===================================================== */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s, visibility 0.6s;
+        }
+
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-box {
+            text-align: center;
+        }
+
+        .loader-circle {
+            width: 65px;
+            height: 65px;
+            border: 5px solid rgba(8,127,206,0.15);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: auto auto 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-box h3 {
+            color: var(--primary);
+        }
+
+        /* =====================================================
+           ANIMATED BACKGROUND
+        ===================================================== */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.20;
+            animation: floating 10s infinite alternate ease-in-out;
+        }
+
+        .blob.one {
+            width: 350px;
+            height: 350px;
+            background: #00b4d8;
+            top: 10%;
+            left: -100px;
+        }
+
+        .blob.two {
+            width: 300px;
+            height: 300px;
+            background: #0077b6;
+            right: -100px;
+            bottom: 15%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floating {
+            from {
+                transform: translate(0,0) scale(1);
+            }
+
+            to {
+                transform: translate(70px,-50px) scale(1.15);
+            }
+        }
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        body.dark header {
+            background: rgba(6,17,29,0.82);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(8,127,206,0.25);
+        }
+
+        .logo-text strong {
+            display: block;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .logo-text small {
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .theme-btn,
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: var(--light-blue);
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        body.dark .theme-btn,
+        body.dark .menu-btn {
+            background: #102d43;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 7% 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 9px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            color: var(--muted);
+            font-size: 19px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 30px rgba(8,127,206,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(8,127,206,0.35);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Doctor card */
+
+        .doctor-card {
+            position: relative;
+            padding: 35px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: cardFloat 5s infinite ease-in-out;
+        }
+
+        @keyframes cardFloat {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .doctor-avatar {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            margin: auto auto 25px;
+            background: linear-gradient(135deg, #caf0f8, #90e0ef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            color: var(--dark-blue);
+            border: 8px solid white;
+            box-shadow: 0 15px 40px rgba(8,127,206,0.2);
+        }
+
+        .doctor-card h2 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .doctor-card .speciality {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .location {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-heading span {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            font-size: 42px;
+            margin-top: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 15px auto 0;
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 16px;
+            border-radius: 15px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateX(7px);
+            border-color: var(--primary);
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+        }
+
+        .info-item small {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            padding: 35px;
+            border-radius: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           ACHIEVEMENT COUNTERS
+        ===================================================== */
+
+        .stats {
+            background: linear-gradient(135deg, #023e8a, #0077b6);
+            color: white;
+            border-radius: 30px;
+            padding: 55px 35px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,80,150,0.25);
+        }
+
+        .stat h3 {
+            font-size: 45px;
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            opacity: 0.85;
+        }
+
+        /* =====================================================
+           EDUCATION / TIMELINE
+        ===================================================== */
+
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 65px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 6px solid var(--background);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           CLINIC
+        ===================================================== */
+
+        .clinic-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .clinic-card {
+            padding: 35px;
+            border-radius: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .clinic-card h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .clinic-detail {
+            margin: 15px 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-box {
+            text-align: center;
+            padding: 65px 25px;
+            border-radius: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-box h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 35px 7%;
+            background: #023e8a;
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        /* =====================================================
+           WHATSAPP FLOATING BUTTON
+        ===================================================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            z-index: 900;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.35);
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.12);
+        }
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        #topBtn {
+            position: fixed;
+            right: 25px;
+            bottom: 100px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: none;
+            z-index: 800;
+        }
+
+        /* =====================================================
+           SCROLL ANIMATION
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 5%;
+                right: 5%;
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 20px;
+                flex-direction: column;
+                display: none;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid,
+            .clinic-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            section {
+                padding: 75px 5%;
+            }
+
+            .hero {
+                padding: 130px 5% 70px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .doctor-card {
+                padding: 25px;
+            }
+
+            .doctor-avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 60px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .section-heading h2 {
+                font-size: 32px;
+            }
+
+            .contact-box h2 {
+                font-size: 30px;
+            }
+
+            .logo-text small {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOADING SCREEN
+===================================================== -->
+
+<div id="loader">
+    <div class="loader-box">
+        <div class="loader-circle"></div>
+        <h3>Dr. Garima Saini</h3>
+        <p>Loading...</p>
+    </div>
+</div>
+
+
+<!-- =====================================================
+     ANIMATED BACKGROUND
+===================================================== -->
+
+<div class="background">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header>
+
+    <nav>
+
+        <a href="#home" class="logo">
+
+            <div class="logo-icon">
+                ⚕
+            </div>
+
+            <div class="logo-text">
+                <strong>Dr. Garima Saini</strong>
+                <small>Ayurvedic Doctor</small>
+            </div>
+
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#clinic">Clinic</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+
+            <button class="theme-btn"
+                    onclick="toggleTheme()"
+                    title="Change Theme">
+                🌙
+            </button>
+
+            <button class="menu-btn"
+                    onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <div class="hero-content reveal">
+
+            <span class="badge">
+                ⚕ Ayurvedic Dhanvantri
+            </span>
+
+            <h1>
+                Dr. <span>Garima Saini</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                BAMS Ayurvedic Doctor with 7+ years of experience,
+                dedicated to providing thoughtful Ayurvedic care
+                for common health concerns.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#about"
+                   class="btn btn-primary">
+                    👩‍⚕️ Know More
+                </a>
+
+                <a href="#contact"
+                   class="btn btn-outline">
+                    📞 Contact Doctor
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="doctor-card reveal">
+
+            <div class="doctor-avatar">
+                👩‍⚕️
+            </div>
+
+            <h2>Dr. Garima Saini</h2>
+
+            <p class="speciality">
+                BAMS • Ayurvedic Doctor
+            </p>
+
+            <p class="location">
+                📍 Roorkee
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <div class="section-container">
+
+        <div class="section-heading reveal">
+
+            <span>About Doctor</span>
+
+            <h2>Meet Dr. Garima Saini</h2>
+
+            <p>
+                Professional information and experience.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-text reveal">
+
+                <h3>
+                    Ayurvedic Care With Experience
+                </h3>
+
+                <p>
+                    Dr. Garima Saini is a well experienced
+                    Ayurvedic doctor with a BAMS degree and
+                    7+ years of professional experience.
+                </p>
+
+                <p>
+                    She provides Ayurvedic care for common
+                    health concerns and is associated with
+                    Shree Dhanvantri Clinic in Roorkee.
+                </p>
+
+                <div class="info-list">
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+                            🎓
+                        </div>
+
+                        <div>
+                            <strong>Qualification</strong>
+                            <br>
+                            <small>BAMS</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+                            🩺
+                        </div>
+
+                        <div>
+                            <strong>Specialization</strong>
+                            <br>
+                            <small>Ayurvedic Medicine</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+                            📍
+                        </div>
+
+                        <div>
+                            <strong>Location</strong>
+                            <br>
+                            <small>Roorkee</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="reveal">
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <h3 class="counter"
+                            data-target="7">
+                            0
+                        </h3>
+
+                        <p>Years Experience</p>
+                    </div>
+
+
+                    <div class="stat">
+                        <h3 class="counter"
+                            data-target="100">
+                            0
+                        </h3>
+
+                        <p>Patients</p>
+                    </div>
+
+
+                    <div class="stat">
+                        <h3>BAMS</h3>
+
+                        <p>Qualification</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section id="services">
+
+    <div class="section-container">
+
+        <div class="section-heading reveal">
+
+            <span>Medical Services</span>
+
+            <h2>Areas of Care</h2>
+
+            <p>
+                Common health concerns mentioned in the
+                doctor's professional profile.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🧠
+                </div>
+
+                <h3>Headache Care</h3>
+
+                <p>
+                    Ayurvedic consultation and care for
+                    common headache-related concerns.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🌡️
+                </div>
+
+                <h3>Common Fevers</h3>
+
+                <p>
+                    Consultation for common fever-related
+                    health concerns.
+                </p>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🌿
+                </div>
+
+                <h3>Ayurvedic Care</h3>
+
+                <p>
+                    Ayurvedic consultation based on the
+                    patient's individual health concerns.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ACHIEVEMENTS
+===================================================== -->
+
+<section id="achievements">
+
+    <div class="section-container">
+
+        <div class="section-heading reveal">
+
+            <span>Professional Journey</span>
+
+            <h2>Experience & Achievements</h2>
+
+            <p>
+                Highlights from Dr. Garima Saini's
+                professional profile.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>BAMS</h3>
+
+                    <p>
+                        Qualified as a Bachelor of Ayurvedic
+                        Medicine and Surgery (BAMS) doctor.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>7+ Years Experience</h3>
+
+                    <p>
+                        More than seven years of experience
+                        in Ayurvedic medical practice.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>Shree Dhanvantri Clinic</h3>
+
+                    <p>
+                        Providing consultation from
+                        Shree Dhanvantri Clinic in Roorkee.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CLINIC
+===================================================== -->
+
+<section id="clinic">
+
+    <div class="section-container">
+
+        <div class="section-heading reveal">
+
+            <span>Clinic Information</span>
+
+            <h2>Shree Dhanvantri Clinic</h2>
+
+            <p>
+                Information for patients and visitors.
+            </p>
+
+        </div>
+
+
+        <div class="clinic-box">
+
+            <div class="clinic-card reveal">
+
+                <h3>🏥 Clinic Details</h3>
+
+                <p class="clinic-detail">
+                    <strong>Clinic:</strong>
+                    Shree Dhanvantri Clinic
+                </p>
+
+                <p class="clinic-detail">
+                    <strong>Doctor:</strong>
+                    Dr. Garima Saini
+                </p>
+
+                <p class="clinic-detail">
+                    <strong>Location:</strong>
+                    Roorkee
+                </p>
+
+                <p class="clinic-detail">
+                    <strong>Consultation:</strong>
+                    10:00 AM – 4:00 PM
+                </p>
+
+            </div>
+
+
+            <div class="clinic-card reveal">
+
+                <h3>🕐 Consultation Hours</h3>
+
+                <p class="clinic-detail">
+                    Monday – Sunday
+                </p>
+
+                <p class="clinic-detail">
+                    <strong>10:00 AM – 4:00 PM</strong>
+                </p>
+
+                <br>
+
+                <a href="tel:8126914291"
+                   class="btn btn-primary">
+                    📞 Call: 8126914291
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact">
+
+    <div class="section-container">
+
+        <div class="contact-box reveal">
+
+            <h2>Get In Touch</h2>
+
+            <p>
+                For consultations and clinic-related
+                information, contact Dr. Garima Saini.
+            </p>
+
+            <div class="buttons"
+                 style="justify-content:center;">
+
+                <a href="tel:8126914291"
+                   class="btn btn-primary">
+                    📞 Call Now
+                </a>
+
+                <a href="https://wa.me/918126914291"
+                   target="_blank"
+                   class="btn btn-outline">
+                    💬 WhatsApp
+                </a>
+
+                <a href="mailto:garimasaini.84@gmail.com"
+                   class="btn btn-outline">
+                    ✉ Email
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <h3>
+        Dr. Garima Saini
+    </h3>
+
+    <p>
+        BAMS • Ayurvedic Doctor • Roorkee
+    </p>
+
+    <p>
+        © 2026 Dr. Garima Saini. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     WHATSAPP BUTTON
+===================================================== -->
+
+<a class="whatsapp"
+   href="https://wa.me/918126914291"
+   target="_blank"
+   title="Chat on WhatsApp">
+
+    💬
+
+</a>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button id="topBtn"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+    ↑
+
+</button>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* =========================
+       LOADING SCREEN
+    ========================= */
+
+    window.addEventListener("load", function() {
+
+        setTimeout(function() {
+
+            document.getElementById("loader")
+                .classList.add("hide");
+
+        }, 1000);
+
+    });
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    function toggleMenu() {
+
+        const menu = document.getElementById("navLinks");
+
+        menu.classList.toggle("show");
+
+    }
+
+
+    /* Close mobile menu when link clicked */
+
+    document.querySelectorAll(".nav-links a")
+        .forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                document.getElementById("navLinks")
+                    .classList.remove("show");
+
+            });
+
+        });
+
+
+    /* =========================
+       DARK / LIGHT MODE
+    ========================= */
+
+    function toggleTheme() {
+
+        document.body.classList.toggle("dark");
+
+        const button = document.querySelector(".theme-btn");
+
+        if (document.body.classList.contains("dark")) {
+
+            button.innerHTML = "☀️";
+
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            button.innerHTML = "🌙";
+
+            localStorage.setItem("theme", "light");
+
+        }
+
+    }
+
+
+    /* Remember theme */
+
+    if (localStorage.getItem("theme") === "dark") {
+
+        document.body.classList.add("dark");
+
+        document.querySelector(".theme-btn")
+            .innerHTML = "☀️";
+
+    }
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    function revealElements() {
+
+        const elements =
+            document.querySelectorAll(".reveal");
+
+        elements.forEach(function(element) {
+
+            const position =
+                element.getBoundingClientRect().top;
+
+            const windowHeight =
+                window.innerHeight;
+
+            if (position < windowHeight - 80) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", revealElements);
+
+    revealElements();
+
+
+    /* =========================
+       COUNTER ANIMATION
+    ========================= */
+
+    let countersStarted = false;
+
+    function startCounters() {
+
+        if (countersStarted) return;
+
+        const stats =
+            document.querySelector(".stats");
+
+        if (!stats) return;
+
+        const position =
+            stats.getBoundingClientRect().top;
+
+        if (position < window.innerHeight - 100) {
+
+            countersStarted = true;
+
+            document.querySelectorAll(".counter")
+                .forEach(function(counter) {
+
+                    const target =
+                        Number(counter.dataset.target);
+
+                    let number = 0;
+
+                    const interval =
+                        setInterval(function() {
+
+                            number++;
+
+                            counter.innerText =
+                                number + "+";
+
+                            if (number >= target) {
+
+                                clearInterval(interval);
+
+                            }
+
+                        }, 20);
+
+                });
+
+        }
+
+    }
+
+    window.addEventListener("scroll", startCounters);
+
+    startCounters();
+
+
+    /* =========================
+       BACK TO TOP BUTTON
+    ========================= */
+
+    window.addEventListener("scroll", function() {
+
+        const button =
+            document.getElementById("topBtn");
+
+        if (window.scrollY > 500) {
+
+            button.style.display = "block";
+
+        } else {
+
+            button.style.display = "none";
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
